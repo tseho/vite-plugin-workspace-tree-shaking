@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+//    "target": "es5",
+//    "lib": [
+//      "dom",
+//      "dom.iterable",
+//      "esnext"
+//    ],
+//    "allowJs": true,
+//    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+//    "strict": true,
+//    "forceConsistentCasingInFileNames": true,
+//    "noFallthroughCasesInSwitch": true,
+//    "module": "es2015",
+//    "moduleResolution": "bundler",
+//    "resolveJsonModule": true,
+//    "isolatedModules": true,
+//    "noEmit": false,
+//    "jsx": "react-jsx",
+//    "declaration": true,
+//    "sourceMap": true,
+//    "outDir": "dist",
+//    "incremental": true
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "**/__mocks__/*"
+  ]
+}
