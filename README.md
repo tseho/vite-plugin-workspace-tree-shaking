@@ -1,11 +1,13 @@
 # vite-plugin-workspace-tree-shaking
 
-Adds tree shaking to files exported by workspaces in development mode.
+This plugin adds tree shaking to files exported by yarn workspaces in development mode.
+
+---
 
 In development mode, vite does not use an efficient tree shaking, especially when using re-exports like `export * from './Something';`.
-It can result in hundreds of files, or even more, being slowly loaded if those re-exports are intensively used in mono-repositories with workspaces.
+It can result in hundreds of files, or even more, being slowly loaded if those re-exports are intensively used in mono-repositories with yarn workspaces.
 
-This plugin dynamically transform the code to optimize imports:
+This plugin dynamically transform the code to optimize imports when serving files:
 ```diff
 - import {Button} from '@acme/ui';
 + import {Button} from '@acme/ui/components/Button';
