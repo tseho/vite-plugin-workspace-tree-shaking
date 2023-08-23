@@ -1,0 +1,47 @@
+name: Pull request
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, ready_for_review]
+
+jobs:
+  test:
+    name: Launch tests
+    runs-on: ubuntu-latest
+    steps:
+      -   name: Checkout the current branch
+          uses: actions/checkout@v3
+
+      -   name: Install node 16
+          uses: actions/setup-node@v3
+          with:
+            node-version: '16'
+
+      -   name: Install pnpm
+          uses: pnpm/action-setup@v2
+          with:
+            version: 8
+
+      -   name: Install node modules
+          run: pnpm install --frozen-lockfile
+
+      -   name: Build the package
+          run: pnpm -r build
+
+      -   name: Execute lint
+          run: pnpm -r lint
+
+      -   name: Execute deps check
+          run: pnpm -r deps
+
+      -   name: Execute unit tests
+          run: |
+            yarn --cwd packages/vite-plugin-workspace-tree-shaking/tests/project-with-workspaces install
+            pnpm -r test
+
+      -   name: Execute integration tests
+          working-directory: ./examples/react-ts-with-workspace
+          run: |
+              yarn install --frozen-lockfile
+              yarn dev &
+              while ! nc -z localhost 5173 </dev/null; do sleep 1; done
+              yarn cypress run
