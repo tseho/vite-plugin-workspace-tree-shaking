@@ -34,6 +34,31 @@ export default defineConfig({
 })
 ```
 
+### ⚠️ TSX files
+
+TSX files are not supported by default. It can be optionnally enabled with an extension.
+
+```shell
+# Using npm
+npm install --save-dev vite-plugin-workspace-tree-shaking-tsx
+# Using yarn 
+yarn add --dev vite-plugin-workspace-tree-shaking-tsx
+```
+```javascript
+// vite.config.js
+import { defineConfig } from 'vite'
+import WorkspaceTreeShaking from 'vite-plugin-workspace-tree-shaking';
+import {jsxParser} from 'vite-plugin-workspace-tree-shaking-tsx'
+
+export default defineConfig({
+  plugins: [
+    WorkspaceTreeShaking({
+      jsxParser: jsxParser,
+    }),
+  ],
+})
+```
+
 ## Example
 
 An example based on the `react-ts` vite template can be found [here](tests/react-ts-with-workspace).
