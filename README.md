@@ -61,4 +61,4 @@ export default defineConfig({
 
 ## Example
 
-An example based on the `react-ts` vite template can be found [here](tests/react-ts-with-workspace).
+An example based on the `react-ts` vite template can be found [here](examples/react-ts-with-workspace).
